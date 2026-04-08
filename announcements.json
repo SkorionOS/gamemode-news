@@ -1,12 +1,12 @@
 [
   {
     "title": "系统更新",
-    "date": "2026-04-09 00:00",
-    "timestamp": 1775664000,
+    "date": "2026-04-09 01:37",
+    "timestamp": 1775669850,
     "channel": "beta",
     "lang": "schinese",
-    "body": "**SkorionOS 55-6**\n- 完善OneXPlayer支持, 添加OneXPlayer APEX 适配\n- 完善stema游戏模式系统更新公告注入功能\n- 更新支持 GPD Win5 控制器固件 1.10",
-    "bbcode_body": "[b]SkorionOS 55-6[/b]\n[list]\n[*] 完善OneXPlayer支持, 添加OneXPlayer APEX 适配\n[*] 完善stema游戏模式系统更新公告注入功能\n[*] 更新支持 GPD Win5 控制器固件 1.10\n[/list]"
+    "body": "**SkorionOS 55-6**\n- 完善 OneXPlayer 支持, 添加 OneXPlayer APEX 适配\n- 完善 Steam 游戏模式系统更新公告注入功能\n- 更新支持 GPD Win5 控制器固件 1.10",
+    "bbcode_body": "[b]SkorionOS 55-6[/b]\n[list]\n[*] 完善 OneXPlayer 支持, 添加 OneXPlayer APEX 适配\n[*] 完善 Steam 游戏模式系统更新公告注入功能\n[*] 更新支持 GPD Win5 控制器固件 1.10\n[/list]"
   },
   {
     "title": "System Update",
