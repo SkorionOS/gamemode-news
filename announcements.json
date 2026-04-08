@@ -1,7 +1,8 @@
 [
   {
     "title": "System Update",
-    "date": "2026-04-07",
+    "date": "2026-04-07 12:00",
+    "timestamp": 1775534400,
     "channel": "",
     "lang": "english",
     "body": "**SkorionOS 55-5**\n- Kernel 7.0 rc\n- Mesa 26.0.4\n- Fixed gyroscope not working after sleep on GPD Win5\n- Added gyroscope support for MSI Claw and ClawA8\n- Component updates",
@@ -9,7 +10,8 @@
   },
   {
     "title": "系统更新",
-    "date": "2026-04-07",
+    "date": "2026-04-07 12:00",
+    "timestamp": 1775534400,
     "channel": "",
     "lang": "schinese",
     "body": "**SkorionOS 55-5**\n- 内核 7.0 rc\n- Mesa 26.0.4\n- 修复了 GPD Win5 在睡眠唤醒后陀螺仪失效的问题\n- 为 MSI Claw 和 ClawA8 添加了陀螺仪支持\n- 组件更新",
