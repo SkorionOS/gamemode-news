@@ -9,12 +9,11 @@ Create a Markdown file in `announcements/` with front matter:
 ```markdown
 ---
 title: System Update
-date: 2026-04-07
+date: 2026-04-07 14:00
 channel:
 lang: schinese
 ---
 **SkorionOS 55-5**
-
 - Kernel 7.0 rc
 - Mesa 26.0.4
 ```
@@ -24,13 +23,13 @@ lang: schinese
 | Field | Required | Description |
 |-------|----------|-------------|
 | `title` | yes | Card title displayed in Steam |
-| `date` | yes | Date for sorting (YYYY-MM-DD) |
+| `date` | no | Publish time. `YYYY-MM-DD HH:MM`, `YYYY-MM-DD` (auto-appends 00:00), or omit (uses CI build time). Interpreted as Asia/Shanghai timezone |
 | `channel` | no | OS branch filter: `rel`, `beta`, `preview`. Empty = all channels |
-| `lang` | no | Language filter: `schinese`, `english`, etc. Empty = all languages |
+| `lang` | no | Language filter: `schinese`, `english`, etc. Empty = all languages. If no announcement matches the user's language, English announcements are shown as fallback |
 
 ### Body
 
-Markdown body is converted to Steam BBCode by the hook. Supported syntax:
+Markdown body is converted to Steam BBCode by CI. Supported syntax:
 
 - `**bold**` → `[b]bold[/b]`
 - `*italic*` → `[i]italic[/i]`
@@ -41,9 +40,9 @@ Markdown body is converted to Steam BBCode by the hook. Supported syntax:
 
 ## How it works
 
-A GitHub Actions workflow runs on every push to `announcements/*.md`, executing `.github/scripts/build-announcements.py` to generate `announcements.json` in the repo root.
+A GitHub Actions workflow runs on every push to `announcements/*.md`, executing `.github/scripts/build-announcements.py` to generate `announcements.json` in the repo root. The JSON includes BBCode-converted body and Unix timestamps.
 
-`gamemode-news-hook` fetches this JSON file via raw URLs (supports mirror sites for better access).
+`gamemode-news-hook` fetches this JSON via raw URLs at injection time, and refreshes asynchronously when the user navigates in Steam.
 
 ## Forking
 

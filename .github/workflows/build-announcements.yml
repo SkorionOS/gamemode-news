@@ -17,6 +17,8 @@ jobs:
 
       - name: Build announcements.json
         run: python3 .github/scripts/build-announcements.py
+        env:
+          TZ: Asia/Shanghai
 
       - name: Commit if changed
         run: |

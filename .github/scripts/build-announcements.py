@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+from datetime import datetime
 
 MAX_ENTRIES = 20
 ANNOUNCEMENTS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "announcements")
@@ -80,6 +81,23 @@ def md_to_bbcode(text):
     return text
 
 
+def normalize_date(raw):
+    """Fill missing/partial date and return (datetime_str, unix_timestamp).
+    No date → current time; date only → append 00:00; full → as-is."""
+    now = datetime.now()
+    if not raw:
+        dt = now
+    elif re.match(r"^\d{4}-\d{2}-\d{2}$", raw):
+        dt = datetime.strptime(raw, "%Y-%m-%d")
+    elif re.match(r"^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}$", raw):
+        dt = datetime.strptime(raw, "%Y-%m-%d %H:%M")
+    elif re.match(r"^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}$", raw):
+        dt = datetime.strptime(raw, "%Y-%m-%d %H:%M:%S")
+    else:
+        dt = now
+    return dt.strftime("%Y-%m-%d %H:%M"), int(dt.timestamp())
+
+
 def main():
     md_dir = os.path.normpath(ANNOUNCEMENTS_DIR)
     out_file = os.path.normpath(OUTPUT_FILE)
@@ -95,16 +113,18 @@ def main():
         if not meta.get("title"):
             print(f"SKIP (no title): {fpath}", file=sys.stderr)
             continue
+        date_str, timestamp = normalize_date(meta.get("date", ""))
         entries.append({
             "title": meta.get("title", ""),
-            "date": meta.get("date", ""),
+            "date": date_str,
+            "timestamp": timestamp,
             "channel": meta.get("channel", ""),
             "lang": meta.get("lang", ""),
             "body": body,
             "bbcode_body": md_to_bbcode(body),
         })
 
-    entries.sort(key=lambda e: e["date"], reverse=True)
+    entries.sort(key=lambda e: e["timestamp"], reverse=True)
     entries = entries[:MAX_ENTRIES]
 
     with open(out_file, "w", encoding="utf-8") as f:
