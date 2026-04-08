@@ -7,6 +7,7 @@ Keeps the latest N entries sorted by date descending.
 import glob
 import json
 import os
+import re
 import sys
 
 MAX_ENTRIES = 20
@@ -40,6 +41,45 @@ def parse_front_matter(text):
     return meta, body
 
 
+def md_to_bbcode(text):
+    """Convert basic Markdown to Steam BBCode."""
+    lines = text.split("\n")
+    result = []
+    in_list = False
+    for line in lines:
+        stripped = line.strip()
+
+        if re.match(r"^[-*]\s+", stripped):
+            item = re.sub(r"^[-*]\s+", "", stripped)
+            if not in_list:
+                result.append("[list]")
+                in_list = True
+            result.append(f"[*] {item}")
+            continue
+        elif in_list:
+            result.append("[/list]")
+            in_list = False
+
+        m = re.match(r"^(#{1,3})\s+(.*)", stripped)
+        if m:
+            level = len(m.group(1))
+            tag = f"h{level}"
+            result.append(f"[{tag}]{m.group(2)}[/{tag}]")
+            continue
+
+        result.append(stripped)
+
+    if in_list:
+        result.append("[/list]")
+
+    text = "\n".join(result)
+    text = re.sub(r"\*\*(.+?)\*\*", r"[b]\1[/b]", text)
+    text = re.sub(r"\*(.+?)\*", r"[i]\1[/i]", text)
+    text = re.sub(r"~~(.+?)~~", r"[strike]\1[/strike]", text)
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"[url=\2]\1[/url]", text)
+    return text
+
+
 def main():
     md_dir = os.path.normpath(ANNOUNCEMENTS_DIR)
     out_file = os.path.normpath(OUTPUT_FILE)
@@ -61,6 +101,7 @@ def main():
             "channel": meta.get("channel", ""),
             "lang": meta.get("lang", ""),
             "body": body,
+            "bbcode_body": md_to_bbcode(body),
         })
 
     entries.sort(key=lambda e: e["date"], reverse=True)
