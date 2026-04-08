@@ -1,8 +1,8 @@
 [
   {
     "title": "测试版本系统更新",
-    "date": "2026-04-09 02:13",
-    "timestamp": 1775672014,
+    "date": "2026-04-09 02:19",
+    "timestamp": 1775672343,
     "channel": "beta",
     "lang": "schinese",
     "body": "**SkorionOS 55-6**\n- 完善 OneXPlayer 支持, 添加 OneXPlayer APEX 适配\n- 完善 Steam 游戏模式系统更新公告注入功能\n- 更新支持 GPD Win5 控制器固件 1.10",
@@ -10,9 +10,9 @@
   },
   {
     "title": "超级前瞻测试版本系统更新",
-    "date": "2026-04-09 02:13",
-    "timestamp": 1775672014,
-    "channel": "preview",
+    "date": "2026-04-09 02:19",
+    "timestamp": 1775672343,
+    "channel": "main",
     "lang": "schinese",
     "body": "注意，本通道未经过充分测试，可能存在严重 Bug\n**SkorionOS 56**\n- Mesa Git 最新构建",
     "bbcode_body": "注意，本通道未经过充分测试，可能存在严重 Bug\n[b]SkorionOS 56[/b]\n[list]\n[*] Mesa Git 最新构建\n[/list]"
