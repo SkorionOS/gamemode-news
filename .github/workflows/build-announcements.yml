@@ -1,0 +1,27 @@
+name: Build announcements.json
+
+on:
+  push:
+    paths:
+      - 'announcements/*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build announcements.json
+        run: python3 .github/scripts/build-announcements.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add announcements.json
+          git diff --cached --quiet || git commit -m "chore: rebuild announcements.json"
+          git push

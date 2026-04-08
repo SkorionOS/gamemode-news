@@ -1,0 +1,13 @@
+---
+title: System Update
+date: 2026-04-07
+channel:
+lang: english
+---
+**SkorionOS 55-5**
+
+- Kernel 7.0 rc
+- Mesa 26.0.4
+- Fixed gyroscope not working after sleep on GPD Win5
+- Added gyroscope support for MSI Claw and ClawA8
+- Component updates

@@ -1,0 +1,13 @@
+---
+title: 系统更新
+date: 2026-04-07
+channel:
+lang: schinese
+---
+**SkorionOS 55-5**
+
+- 内核 7.0 rc
+- Mesa 26.0.4
+- 修复了 GPD Win5 在睡眠唤醒后陀螺仪失效的问题
+- 为 MSI Claw 和 ClawA8 添加了陀螺仪支持
+- 组件更新
