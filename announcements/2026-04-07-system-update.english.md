@@ -5,7 +5,6 @@ channel:
 lang: english
 ---
 **SkorionOS 55-5**
-
 - Kernel 7.0 rc
 - Mesa 26.0.4
 - Fixed gyroscope not working after sleep on GPD Win5

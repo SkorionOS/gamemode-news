@@ -5,7 +5,6 @@ channel:
 lang: schinese
 ---
 **SkorionOS 55-5**
-
 - 内核 7.0 rc
 - Mesa 26.0.4
 - 修复了 GPD Win5 在睡眠唤醒后陀螺仪失效的问题
