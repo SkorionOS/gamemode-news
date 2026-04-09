@@ -209,13 +209,8 @@ def generate_html(entries):
 
     # Collect available languages and channels from data
     langs = sorted({e["lang"] for e in entries if e["lang"]})
-    channels = []
-    seen_ch = set()
-    for e in entries:
-        ch = e["channel"]
-        if ch and ch not in seen_ch:
-            seen_ch.add(ch)
-            channels.append(ch)
+    data_channels = {e["channel"] for e in entries if e["channel"]}
+    channels = [ch for ch in CHANNEL_LABELS if ch in data_channels]
 
     data_json = json.dumps(entries, ensure_ascii=False)
 
@@ -227,7 +222,7 @@ CHANNEL_LABELS = {
     "rel": {"en": "Stable", "zh": "稳定版"},
     "beta": {"en": "Beta", "zh": "测试版"},
     "preview": {"en": "Preview", "zh": "预览版"},
-    "main": {"en": "Preview", "zh": "前瞻版"},
+    "main": {"en": "Super Preview", "zh": "超级前瞻版"},
 }
 
 CHANNEL_COLORS = {
