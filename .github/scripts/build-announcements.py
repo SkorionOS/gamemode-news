@@ -132,12 +132,26 @@ def md_to_html(text):
     return text
 
 
-def normalize_date(raw):
+def git_commit_time(filepath):
+    """Return the last git commit datetime for a file, or None."""
+    import subprocess
+    try:
+        ts = subprocess.check_output(
+            ["git", "log", "-1", "--format=%ct", "--", filepath],
+            stderr=subprocess.DEVNULL,
+        ).decode().strip()
+        if ts:
+            return datetime.fromtimestamp(int(ts))
+    except Exception:
+        pass
+    return None
+
+
+def normalize_date(raw, filepath=None):
     """Fill missing/partial date and return (datetime_str, unix_timestamp).
-    No date → current time; date only → append 00:00; full → as-is."""
-    now = datetime.now()
+    No date → git commit time of the file → current time as last resort."""
     if not raw:
-        dt = now
+        dt = (filepath and git_commit_time(filepath)) or datetime.now()
     elif re.match(r"^\d{4}-\d{2}-\d{2}$", raw):
         dt = datetime.strptime(raw, "%Y-%m-%d")
     elif re.match(r"^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}$", raw):
@@ -145,7 +159,7 @@ def normalize_date(raw):
     elif re.match(r"^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}$", raw):
         dt = datetime.strptime(raw, "%Y-%m-%d %H:%M:%S")
     else:
-        dt = now
+        dt = (filepath and git_commit_time(filepath)) or datetime.now()
     return dt.strftime("%Y-%m-%d %H:%M"), int(dt.timestamp())
 
 
@@ -164,7 +178,7 @@ def main():
         if not meta.get("title"):
             print(f"SKIP (no title): {fpath}", file=sys.stderr)
             continue
-        date_str, timestamp = normalize_date(meta.get("date", ""))
+        date_str, timestamp = normalize_date(meta.get("date", ""), fpath)
         entries.append({
             "title": meta.get("title", ""),
             "date": date_str,
