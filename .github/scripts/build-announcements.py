@@ -429,7 +429,7 @@ h1{{font-size:1.5rem;color:#fff;font-weight:700;letter-spacing:.5px}}
 .card-date{{font-size:.8rem;color:#8f98a0;margin-left:auto}}
 .card-body{{color:#acb2b8;font-size:.9rem}}
 .card-body strong{{color:#c7d5e0}}
-.card-body ul{{padding-left:20px;margin:6px 0}}
+.card-body ul,.card-body ol{{padding-left:20px;margin:6px 0}}
 .card-body li{{margin:3px 0}}
 .card-body p{{margin:6px 0}}
 .card-body a{{color:#66c0f4;text-decoration:none}}
