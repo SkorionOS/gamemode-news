@@ -38,9 +38,20 @@ Markdown body is converted to Steam BBCode by CI. Supported syntax:
 - `- list item` → `[list][*] list item[/list]`
 - `[text](url)` → `[url=url]text[/url]`
 
+## Web page
+
+CI also generates a static announcement page at `docs/index.html`. View it directly via raw URL from any mirror:
+
+- [GitHub Pages](https://skorionos.github.io/gamemode-news/) (if enabled)
+- [Gitee](https://gitee.com/honjow/gamemode-news/raw/main/docs/index.html)
+- [Gitea](https://gitea.switchsystem.eu.org/honjow/gamemode-news/raw/branch/main/docs/index.html)
+- [GitHub Raw](https://raw.githubusercontent.com/SkorionOS/gamemode-news/master/docs/index.html)
+
+The page auto-detects browser language, supports channel filtering (Stable / Beta / Preview), and works as a single self-contained HTML file with no external dependencies.
+
 ## How it works
 
-A GitHub Actions workflow runs on every push to `announcements/*.md`, executing `.github/scripts/build-announcements.py` to generate `announcements.json` in the repo root. The JSON includes BBCode-converted body and Unix timestamps.
+A GitHub Actions workflow runs on every push to `announcements/*.md`, executing `.github/scripts/build-announcements.py` to generate `announcements.json` and `docs/index.html`. The JSON includes BBCode-converted body and Unix timestamps; the HTML embeds the same data for standalone viewing.
 
 `gamemode-news-hook` fetches this JSON via raw URLs at injection time, and refreshes asynchronously when the user navigates in Steam.
 
