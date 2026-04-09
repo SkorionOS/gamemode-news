@@ -44,6 +44,7 @@ Markdown body is converted to Steam BBCode by CI. Supported syntax:
 - ` ``` ` code block ` ``` ` → `[code]...[/code]`
 - `> quote` → `[quote]...[/quote]`
 - `---` → `[hr][/hr]`
+- `| a | b |` table → `[table][tr][th]a[/th][th]b[/th][/tr]...[/table]`
 
 ## Web page
 
