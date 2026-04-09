@@ -47,24 +47,78 @@ def parse_front_matter(text):
 
 
 def md_to_bbcode(text):
-    """Convert basic Markdown to Steam BBCode."""
+    """Convert Markdown to Steam BBCode."""
     lines = text.split("\n")
     result = []
-    in_list = False
+    in_ul = False
+    in_ol = False
+    in_quote = False
+    in_code_block = False
+
     for line in lines:
         stripped = line.strip()
 
+        # Fenced code block
+        if stripped.startswith("```"):
+            if in_code_block:
+                result.append("[/code]")
+                in_code_block = False
+            else:
+                in_code_block = True
+                result.append("[code]")
+            continue
+        if in_code_block:
+            result.append(line.rstrip())
+            continue
+
+        # Unordered list
         if re.match(r"^[-*]\s+", stripped):
+            if in_ol:
+                result.append("[/olist]")
+                in_ol = False
             item = re.sub(r"^[-*]\s+", "", stripped)
-            if not in_list:
+            if not in_ul:
                 result.append("[list]")
-                in_list = True
+                in_ul = True
             result.append(f"[*] {item}")
             continue
-        elif in_list:
+        elif in_ul:
             result.append("[/list]")
-            in_list = False
+            in_ul = False
 
+        # Ordered list
+        if re.match(r"^\d+\.\s+", stripped):
+            if in_ul:
+                result.append("[/list]")
+                in_ul = False
+            item = re.sub(r"^\d+\.\s+", "", stripped)
+            if not in_ol:
+                result.append("[olist]")
+                in_ol = True
+            result.append(f"[*] {item}")
+            continue
+        elif in_ol:
+            result.append("[/olist]")
+            in_ol = False
+
+        # Blockquote
+        if stripped.startswith("> "):
+            content = stripped[2:]
+            if not in_quote:
+                result.append("[quote]")
+                in_quote = True
+            result.append(content)
+            continue
+        elif in_quote:
+            result.append("[/quote]")
+            in_quote = False
+
+        # Horizontal rule
+        if re.match(r"^[-*_]{3,}$", stripped):
+            result.append("[hr][/hr]")
+            continue
+
+        # Heading
         m = re.match(r"^(#{1,3})\s+(.*)", stripped)
         if m:
             level = len(m.group(1))
@@ -74,36 +128,100 @@ def md_to_bbcode(text):
 
         result.append(stripped)
 
-    if in_list:
+    if in_ul:
         result.append("[/list]")
+    if in_ol:
+        result.append("[/olist]")
+    if in_quote:
+        result.append("[/quote]")
+    if in_code_block:
+        result.append("[/code]")
 
     text = "\n".join(result)
+    # Images before links (![alt](url) vs [text](url))
+    text = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", r"[img]\2[/img]", text)
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"[url=\2]\1[/url]", text)
     text = re.sub(r"\*\*(.+?)\*\*", r"[b]\1[/b]", text)
+    text = re.sub(r"__(.+?)__", r"[u]\1[/u]", text)
     text = re.sub(r"\*(.+?)\*", r"[i]\1[/i]", text)
     text = re.sub(r"~~(.+?)~~", r"[strike]\1[/strike]", text)
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"[url=\2]\1[/url]", text)
+    text = re.sub(r"(?<!`)`([^`]+)`(?!`)", r"[code]\1[/code]", text)
     return text
 
 
 def md_to_html(text):
-    """Convert basic Markdown to HTML."""
+    """Convert Markdown to HTML."""
     lines = text.split("\n")
     result = []
-    in_list = False
+    in_ul = False
+    in_ol = False
+    in_quote = False
+    in_code_block = False
+
     for line in lines:
         stripped = line.strip()
 
+        # Fenced code block
+        if stripped.startswith("```"):
+            if in_code_block:
+                result.append("</code></pre>")
+                in_code_block = False
+            else:
+                in_code_block = True
+                result.append("<pre><code>")
+            continue
+        if in_code_block:
+            result.append(html.escape(line.rstrip()))
+            continue
+
+        # Unordered list
         if re.match(r"^[-*]\s+", stripped):
+            if in_ol:
+                result.append("</ol>")
+                in_ol = False
             item = re.sub(r"^[-*]\s+", "", stripped)
-            if not in_list:
+            if not in_ul:
                 result.append("<ul>")
-                in_list = True
+                in_ul = True
             result.append(f"<li>{html.escape(item)}</li>")
             continue
-        elif in_list:
+        elif in_ul:
             result.append("</ul>")
-            in_list = False
+            in_ul = False
 
+        # Ordered list
+        if re.match(r"^\d+\.\s+", stripped):
+            if in_ul:
+                result.append("</ul>")
+                in_ul = False
+            item = re.sub(r"^\d+\.\s+", "", stripped)
+            if not in_ol:
+                result.append("<ol>")
+                in_ol = True
+            result.append(f"<li>{html.escape(item)}</li>")
+            continue
+        elif in_ol:
+            result.append("</ol>")
+            in_ol = False
+
+        # Blockquote
+        if stripped.startswith("> "):
+            content = stripped[2:]
+            if not in_quote:
+                result.append("<blockquote>")
+                in_quote = True
+            result.append(html.escape(content))
+            continue
+        elif in_quote:
+            result.append("</blockquote>")
+            in_quote = False
+
+        # Horizontal rule
+        if re.match(r"^[-*_]{3,}$", stripped):
+            result.append("<hr>")
+            continue
+
+        # Heading
         m = re.match(r"^(#{1,3})\s+(.*)", stripped)
         if m:
             level = len(m.group(1))
@@ -115,20 +233,38 @@ def md_to_html(text):
         else:
             result.append("")
 
-    if in_list:
+    if in_ul:
         result.append("</ul>")
+    if in_ol:
+        result.append("</ol>")
+    if in_quote:
+        result.append("</blockquote>")
+    if in_code_block:
+        result.append("</code></pre>")
 
     text = "\n".join(result)
-    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
-    text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", text)
-    text = re.sub(r"~~(.+?)~~", r"<del>\1</del>", text)
+    # Images before links
+    text = re.sub(
+        r"!\[([^\]]*)\]\(([^)]+)\)",
+        r'<img src="\2" alt="\1" style="max-width:100%">',
+        text,
+    )
     text = re.sub(
         r"\[([^\]]+)\]\(([^)]+)\)",
         r'<a href="\2" target="_blank" rel="noopener">\1</a>',
         text,
     )
-    # unescape bold/italic/link text that was escaped inside <p>/<li>
-    text = re.sub(r"&lt;(/?(?:strong|em|del|a|ul|li|h[1-3])(?:\s[^>]*)?)&gt;", r"<\1>", text)
+    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"__(.+?)__", r"<u>\1</u>", text)
+    text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", text)
+    text = re.sub(r"~~(.+?)~~", r"<del>\1</del>", text)
+    text = re.sub(r"(?<!`)`([^`]+)`(?!`)", r"<code>\1</code>", text)
+    # unescape HTML tags generated by inline formatting inside escaped <p>/<li>
+    text = re.sub(
+        r"&lt;(/?(?:strong|em|del|u|a|code|img|ul|ol|li|blockquote|pre|h[1-3]|hr)(?:\s[^>]*)?)&gt;",
+        r"<\1>",
+        text,
+    )
     return text
 
 

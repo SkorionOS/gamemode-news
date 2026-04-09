@@ -33,10 +33,17 @@ Markdown body is converted to Steam BBCode by CI. Supported syntax:
 
 - `**bold**` → `[b]bold[/b]`
 - `*italic*` → `[i]italic[/i]`
+- `__underline__` → `[u]underline[/u]`
 - `~~strike~~` → `[strike]strike[/strike]`
-- `# Heading` → `[h1]Heading[/h1]`
+- `# Heading` / `## H2` / `### H3` → `[h1]...[/h1]` / `[h2]` / `[h3]`
 - `- list item` → `[list][*] list item[/list]`
+- `1. ordered item` → `[olist][*] ordered item[/olist]`
 - `[text](url)` → `[url=url]text[/url]`
+- `![alt](url)` → `[img]url[/img]`
+- `` `code` `` → `[code]code[/code]`
+- ` ``` ` code block ` ``` ` → `[code]...[/code]`
+- `> quote` → `[quote]...[/quote]`
+- `---` → `[hr][/hr]`
 
 ## Web page
 

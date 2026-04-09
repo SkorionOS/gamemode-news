@@ -51,8 +51,8 @@
   },
   {
     "title": "系统更新",
-    "date": "2026-04-09 18:36",
-    "timestamp": 1775731006,
+    "date": "2026-04-09 08:03",
+    "timestamp": 1775692986,
     "channel": "rel",
     "lang": "schinese",
     "body": "**SkorionOS 55-6**\n- 完善 OneXPlayer 支持, 添加 OneXPlayer APEX 适配\n- 完善 Steam 游戏模式系统更新公告注入功能\n- 更新支持 GPD Win5 控制器固件 1.10\n\n**SkorionOS 55-5**\n- 内核 7.0 rc\n- Mesa 26.0.4\n- 修复了 GPD Win5 在睡眠唤醒后陀螺仪失效的问题\n- 为 MSI Claw 和 ClawA8 添加了陀螺仪支持\n- 组件更新",
