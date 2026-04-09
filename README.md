@@ -43,9 +43,9 @@ Markdown body is converted to Steam BBCode by CI. Supported syntax:
 CI also generates a static announcement page at `docs/index.html`. View it directly via raw URL from any mirror:
 
 - [GitHub Pages](https://skorionos.github.io/gamemode-news/) (if enabled)
-- [Gitee](https://gitee.com/honjow/gamemode-news/raw/main/docs/index.html)
-- [Gitea](https://gitea.switchsystem.eu.org/honjow/gamemode-news/raw/branch/main/docs/index.html)
-- [GitHub Raw](https://raw.githubusercontent.com/SkorionOS/gamemode-news/master/docs/index.html)
+- [GitHub Preview](https://htmlpreview.github.io/?https://github.com/SkorionOS/gamemode-news/blob/master/docs/index.html)
+
+> **Note:** Raw URLs from GitHub/Gitee/Gitea serve HTML as `text/plain`, so browsers display source code instead of rendering the page. Use GitHub Pages or the preview link above.
 
 The page auto-detects browser language, supports channel filtering (Stable / Beta / Preview), and works as a single self-contained HTML file with no external dependencies.
 

@@ -263,7 +263,10 @@ def _html_template(data_json, langs, channels):
     lang_options = ""
     for lang in langs:
         label = LANG_LABELS.get(lang, lang)
-        lang_options += f'<option value="{lang}">{label}</option>\n'
+        lang_options += (
+            f'<option value="{lang}" data-label-en="{label}" '
+            f'data-label-zh="{label}">{label}</option>\n'
+        )
 
     return f'''<!DOCTYPE html>
 <html lang="zh">
@@ -277,8 +280,10 @@ body{{background:#0f1923;color:#c7d5e0;font-family:-apple-system,BlinkMacSystemF
 .container{{max-width:720px;margin:0 auto;padding:24px 16px}}
 header{{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px}}
 h1{{font-size:1.5rem;color:#fff;font-weight:700;letter-spacing:.5px}}
-.lang-select{{background:#1b2838;color:#c7d5e0;border:1px solid #2a475e;border-radius:6px;padding:6px 10px;font-size:.85rem;cursor:pointer}}
-.lang-select:focus{{outline:none;border-color:#66c0f4}}
+.lang-wrap{{display:flex;align-items:center;gap:6px;background:#1b2838;border:1px solid #2a475e;border-radius:6px;padding:4px 8px}}
+.lang-wrap:focus-within{{border-color:#66c0f4}}
+.lang-icon{{color:#8f98a0;flex-shrink:0}}
+.lang-select{{background:transparent;color:#c7d5e0;border:none;font-size:.85rem;cursor:pointer;outline:none}}
 .tabs{{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}}
 .tab{{background:transparent;color:#8f98a0;border:1px solid #2a475e;border-radius:20px;padding:6px 16px;font-size:.85rem;cursor:pointer;transition:all .2s}}
 .tab:hover{{border-color:#66c0f4;color:#c7d5e0}}
@@ -306,10 +311,10 @@ footer{{text-align:center;color:#4a5568;font-size:.75rem;margin-top:40px;padding
 <div class="container">
 <header>
   <h1>SkorionOS Updates</h1>
-  <select class="lang-select" id="langSelect">
+  <div class="lang-wrap"><svg class="lang-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg><select class="lang-select" id="langSelect">
     <option value="all" data-label-en="All Languages" data-label-zh="所有语言">所有语言</option>
     {lang_options}
-  </select>
+  </select></div>
 </header>
 <div class="tabs" id="tabs">
   <button class="tab active" data-channel="all" data-label-en="All" data-label-zh="全部" style="--ch-color:#66c0f4">全部</button>
@@ -337,7 +342,16 @@ var BROWSER_LANG_MAP={{
 var AVAILABLE_LANGS={{}};
 for(var i=0;i<DATA.length;i++) if(DATA[i].lang) AVAILABLE_LANGS[DATA[i].lang]=1;
 
-function detectLang(){{
+function detectBrowserLang(){{
+  var langs=navigator.languages||[navigator.language||""];
+  for(var i=0;i<langs.length;i++){{
+    var tag=langs[i].toLowerCase();
+    if(tag.startsWith("zh")) return "zh";
+  }}
+  return "en";
+}}
+
+function detectContentLang(){{
   var langs=navigator.languages||[navigator.language||""];
   for(var i=0;i<langs.length;i++){{
     var tag=langs[i].toLowerCase();
@@ -347,8 +361,30 @@ function detectLang(){{
   return "all";
 }}
 
-var curChannel="all",curLang=detectLang();
+var curChannel="all",curLang=detectContentLang();
 document.getElementById("langSelect").value=curLang;
+
+var ZH_LANGS={{"schinese":1,"tchinese":1}};
+function getUILang(){{
+  if(curLang==="all") return detectBrowserLang();
+  return ZH_LANGS[curLang]?"zh":"en";
+}}
+
+function chLabel(labels){{var ui=getUILang();return ui==="zh"?(labels.zh||labels.en||""):(labels.en||labels.zh||"");}}
+
+function updateUILang(){{
+  var ui=getUILang();
+  document.querySelectorAll(".tab").forEach(function(t){{
+    var en=t.dataset.labelEn,zh=t.dataset.labelZh;
+    t.textContent=ui==="zh"?(zh||en):(en||zh);
+  }});
+  var sel=document.getElementById("langSelect");
+  for(var i=0;i<sel.options.length;i++){{
+    var o=sel.options[i];
+    if(o.dataset.labelEn) o.textContent=ui==="zh"?(o.dataset.labelZh||o.dataset.labelEn):(o.dataset.labelEn||o.dataset.labelZh);
+  }}
+}}
+updateUILang();
 
 function render(){{
   var cards=document.getElementById("cards");
@@ -361,7 +397,7 @@ function render(){{
     count++;
     var ch=e.channel||"";
     var labels=CHANNEL_LABELS[ch]||{{}};
-    var labelText=labels.zh||labels.en||ch;
+    var labelText=chLabel(labels)||ch;
     var color={json.dumps(CHANNEL_COLORS)};
     var c=document.createElement("div");
     c.className="card";
@@ -389,6 +425,7 @@ document.getElementById("tabs").addEventListener("click",function(ev){{
 
 document.getElementById("langSelect").addEventListener("change",function(){{
   curLang=this.value;
+  updateUILang();
   render();
 }});
 
