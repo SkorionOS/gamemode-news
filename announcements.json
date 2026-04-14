@@ -1,5 +1,25 @@
 [
   {
+    "title": "Beta System Update",
+    "date": "2026-04-14 17:38",
+    "timestamp": 1776159511,
+    "channel": "beta",
+    "lang": "english",
+    "body": "**SkorionOS 55-8**\n- 7.0 kernel release",
+    "bbcode_body": "[b]SkorionOS 55-8[/b]\n[list]\n[*] 7.0 kernel release\n[/list]",
+    "html_body": "<p><strong>SkorionOS 55-8</strong></p>\n<ul>\n<li>7.0 kernel release</li>\n</ul>"
+  },
+  {
+    "title": "测试版本系统更新",
+    "date": "2026-04-14 17:38",
+    "timestamp": 1776159511,
+    "channel": "beta",
+    "lang": "schinese",
+    "body": "**SkorionOS 55-8**\n- 7.0 内核正式版",
+    "bbcode_body": "[b]SkorionOS 55-8[/b]\n[list]\n[*] 7.0 内核正式版\n[/list]",
+    "html_body": "<p><strong>SkorionOS 55-8</strong></p>\n<ul>\n<li>7.0 内核正式版</li>\n</ul>"
+  },
+  {
     "title": "系统更新",
     "date": "2026-04-13 05:10",
     "timestamp": 1776028235,
@@ -8,26 +28,6 @@
     "body": "**SkorionOS 55-7**\n- 新版本 hid-msi-claw 内核驱动，为微星设备实现完整的控制器功能支持\n- gamemode-news-hook（Steam 游戏模式系统更新公告注入）功能完善, 版本更新\n- gamescope 更新到 3.16.23\n- 优化低端显卡的 AMDGPU 显存管理 [Valve-Better-Gaming-Low-vRAM](https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM)\n- 修复 cjust 命令自动补全问题\n \n**SkorionOS 55-6**\n- 完善 OneXPlayer 支持, 添加 OneXPlayer APEX 适配\n- 完善 Steam 游戏模式系统更新公告注入功能\n- 更新支持 GPD Win5 控制器固件 1.10\n\n**SkorionOS 55-5**\n- 内核 7.0 rc\n- Mesa 26.0.4\n- 修复了 GPD Win5 在睡眠唤醒后陀螺仪失效的问题\n- 为 MSI Claw 和 ClawA8 添加了陀螺仪支持\n- 组件更新",
     "bbcode_body": "[b]SkorionOS 55-7[/b]\n[list]\n[*] 新版本 hid-msi-claw 内核驱动，为微星设备实现完整的控制器功能支持\n[*] gamemode-news-hook（Steam 游戏模式系统更新公告注入）功能完善, 版本更新\n[*] gamescope 更新到 3.16.23\n[*] 优化低端显卡的 AMDGPU 显存管理 [url=https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM]Valve-Better-Gaming-Low-vRAM[/url]\n[*] 修复 cjust 命令自动补全问题\n[/list]\n\n[b]SkorionOS 55-6[/b]\n[list]\n[*] 完善 OneXPlayer 支持, 添加 OneXPlayer APEX 适配\n[*] 完善 Steam 游戏模式系统更新公告注入功能\n[*] 更新支持 GPD Win5 控制器固件 1.10\n[/list]\n\n[b]SkorionOS 55-5[/b]\n[list]\n[*] 内核 7.0 rc\n[*] Mesa 26.0.4\n[*] 修复了 GPD Win5 在睡眠唤醒后陀螺仪失效的问题\n[*] 为 MSI Claw 和 ClawA8 添加了陀螺仪支持\n[*] 组件更新\n[/list]",
     "html_body": "<p><strong>SkorionOS 55-7</strong></p>\n<ul>\n<li>新版本 hid-msi-claw 内核驱动，为微星设备实现完整的控制器功能支持</li>\n<li>gamemode-news-hook（Steam 游戏模式系统更新公告注入）功能完善, 版本更新</li>\n<li>gamescope 更新到 3.16.23</li>\n<li>优化低端显卡的 AMDGPU 显存管理 <a href=\"https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM\" target=\"_blank\" rel=\"noopener\">Valve-Better-Gaming-Low-vRAM</a></li>\n<li>修复 cjust 命令自动补全问题</li>\n</ul>\n\n<p><strong>SkorionOS 55-6</strong></p>\n<ul>\n<li>完善 OneXPlayer 支持, 添加 OneXPlayer APEX 适配</li>\n<li>完善 Steam 游戏模式系统更新公告注入功能</li>\n<li>更新支持 GPD Win5 控制器固件 1.10</li>\n</ul>\n\n<p><strong>SkorionOS 55-5</strong></p>\n<ul>\n<li>内核 7.0 rc</li>\n<li>Mesa 26.0.4</li>\n<li>修复了 GPD Win5 在睡眠唤醒后陀螺仪失效的问题</li>\n<li>为 MSI Claw 和 ClawA8 添加了陀螺仪支持</li>\n<li>组件更新</li>\n</ul>"
-  },
-  {
-    "title": "Beta System Update",
-    "date": "2026-04-13 01:05",
-    "timestamp": 1776013508,
-    "channel": "beta",
-    "lang": "english",
-    "body": "**SkorionOS 55-7**\n- New version of the hid-msi-claw kernel driver, provides complete controller functionality support for MSI devices\n- Improved the gamemode-news-hook (Steam game mode system update announcement injection) feature, version update\n- Update gamescope to 3.16.23\n- Optimizing AMDGPU's VRAM management for low-end GPUs [Valve-Better-Gaming-Low-vRAM](https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM)\n- Fix the auto-completion issue of the cjust command",
-    "bbcode_body": "[b]SkorionOS 55-7[/b]\n[list]\n[*] New version of the hid-msi-claw kernel driver, provides complete controller functionality support for MSI devices\n[*] Improved the gamemode-news-hook (Steam game mode system update announcement injection) feature, version update\n[*] Update gamescope to 3.16.23\n[*] Optimizing AMDGPU's VRAM management for low-end GPUs [url=https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM]Valve-Better-Gaming-Low-vRAM[/url]\n[*] Fix the auto-completion issue of the cjust command\n[/list]",
-    "html_body": "<p><strong>SkorionOS 55-7</strong></p>\n<ul>\n<li>New version of the hid-msi-claw kernel driver, provides complete controller functionality support for MSI devices</li>\n<li>Improved the gamemode-news-hook (Steam game mode system update announcement injection) feature, version update</li>\n<li>Update gamescope to 3.16.23</li>\n<li>Optimizing AMDGPU&#x27;s VRAM management for low-end GPUs <a href=\"https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM\" target=\"_blank\" rel=\"noopener\">Valve-Better-Gaming-Low-vRAM</a></li>\n<li>Fix the auto-completion issue of the cjust command</li>\n</ul>"
-  },
-  {
-    "title": "测试版本系统更新",
-    "date": "2026-04-13 01:05",
-    "timestamp": 1776013508,
-    "channel": "beta",
-    "lang": "schinese",
-    "body": "**SkorionOS 55-7**\n- 新版本 hid-msi-claw 内核驱动，为微星设备实现完整的控制器功能支持\n- gamemode-news-hook（Steam 游戏模式系统更新公告注入）功能完善, 版本更新\n- gamescope 更新到 3.16.23\n- 优化低端显卡的 AMDGPU 显存管理 [Valve-Better-Gaming-Low-vRAM](https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM)\n- 修复 cjust 命令自动补全问题",
-    "bbcode_body": "[b]SkorionOS 55-7[/b]\n[list]\n[*] 新版本 hid-msi-claw 内核驱动，为微星设备实现完整的控制器功能支持\n[*] gamemode-news-hook（Steam 游戏模式系统更新公告注入）功能完善, 版本更新\n[*] gamescope 更新到 3.16.23\n[*] 优化低端显卡的 AMDGPU 显存管理 [url=https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM]Valve-Better-Gaming-Low-vRAM[/url]\n[*] 修复 cjust 命令自动补全问题\n[/list]",
-    "html_body": "<p><strong>SkorionOS 55-7</strong></p>\n<ul>\n<li>新版本 hid-msi-claw 内核驱动，为微星设备实现完整的控制器功能支持</li>\n<li>gamemode-news-hook（Steam 游戏模式系统更新公告注入）功能完善, 版本更新</li>\n<li>gamescope 更新到 3.16.23</li>\n<li>优化低端显卡的 AMDGPU 显存管理 <a href=\"https://www.phoronix.com/news/Valve-Better-Gaming-Low-vRAM\" target=\"_blank\" rel=\"noopener\">Valve-Better-Gaming-Low-vRAM</a></li>\n<li>修复 cjust 命令自动补全问题</li>\n</ul>"
   },
   {
     "title": "Super Preview Beta System Update",
