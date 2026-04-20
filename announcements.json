@@ -1,13 +1,13 @@
 [
   {
     "title": "测试版本系统更新",
-    "date": "2026-04-21 03:40",
-    "timestamp": 1776714059,
+    "date": "2026-04-21 03:54",
+    "timestamp": 1776714852,
     "channel": "beta",
     "lang": "schinese",
-    "body": "**SkorionOS 55-10**\n- 来自7.1内核的新 NTFS 内核驱动\n- 同步使用 SteamOS 的 hid-asus-ally 驱动\n- 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题",
-    "bbcode_body": "[b]SkorionOS 55-10[/b]\n[list]\n[*] 来自7.1内核的新 NTFS 内核驱动\n[*] 同步使用 SteamOS 的 hid-asus-ally 驱动\n[*] 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题\n[/list]",
-    "html_body": "<p><strong>SkorionOS 55-10</strong></p>\n<ul>\n<li>来自7.1内核的新 NTFS 内核驱动</li>\n<li>同步使用 SteamOS 的 hid-asus-ally 驱动</li>\n<li>修复睡眠唤醒之后，ROG Ally 背键无法使用的问题</li>\n</ul>"
+    "body": "**SkorionOS 55-10**\n- 来自 7.1 内核的新 NTFS 内核驱动\n- 同步使用 SteamOS 的 hid-asus-ally 驱动\n- 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题",
+    "bbcode_body": "[b]SkorionOS 55-10[/b]\n[list]\n[*] 来自 7.1 内核的新 NTFS 内核驱动\n[*] 同步使用 SteamOS 的 hid-asus-ally 驱动\n[*] 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题\n[/list]",
+    "html_body": "<p><strong>SkorionOS 55-10</strong></p>\n<ul>\n<li>来自 7.1 内核的新 NTFS 内核驱动</li>\n<li>同步使用 SteamOS 的 hid-asus-ally 驱动</li>\n<li>修复睡眠唤醒之后，ROG Ally 背键无法使用的问题</li>\n</ul>"
   },
   {
     "title": "Beta System Update",
