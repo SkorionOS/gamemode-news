@@ -1,13 +1,13 @@
 [
   {
     "title": "测试版本系统更新",
-    "date": "2026-07-24 11:01",
-    "timestamp": 1784862076,
+    "date": "2026-07-24 16:02",
+    "timestamp": 1784880133,
     "channel": "beta",
     "lang": "schinese",
-    "body": "**SkorionOS 56**\n- 更新 Mesa\n- 更新了软件归档日期到 2026-07-10\n\n**SkorionOS 55-12**\n- 更新 PowerControl ，解决功耗控制异常问题\n- 更新了软件归档日期到 2026-05-01，会带来很多软件更新\n- GNOME 更新到 50\n\n**SkorionOS 55-11**\n- 更新 PowerControl 解决新版 Steam 下显示异常问题\n\n**SkorionOS 55-10**\n- 来自主线 7.1 内核的新 NTFS 内核驱动\n- 同步使用 SteamOS 的 hid-asus-ally 驱动\n- 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题",
-    "bbcode_body": "[b]SkorionOS 56[/b]\n[list]\n[*] 更新 Mesa\n[*] 更新了软件归档日期到 2026-07-10\n[/list]\n\n[b]SkorionOS 55-12[/b]\n[list]\n[*] 更新 PowerControl ，解决功耗控制异常问题\n[*] 更新了软件归档日期到 2026-05-01，会带来很多软件更新\n[*] GNOME 更新到 50\n[/list]\n\n[b]SkorionOS 55-11[/b]\n[list]\n[*] 更新 PowerControl 解决新版 Steam 下显示异常问题\n[/list]\n\n[b]SkorionOS 55-10[/b]\n[list]\n[*] 来自主线 7.1 内核的新 NTFS 内核驱动\n[*] 同步使用 SteamOS 的 hid-asus-ally 驱动\n[*] 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题\n[/list]",
-    "html_body": "<p><strong>SkorionOS 56</strong></p>\n<ul>\n<li>更新 Mesa</li>\n<li>更新了软件归档日期到 2026-07-10</li>\n</ul>\n\n<p><strong>SkorionOS 55-12</strong></p>\n<ul>\n<li>更新 PowerControl ，解决功耗控制异常问题</li>\n<li>更新了软件归档日期到 2026-05-01，会带来很多软件更新</li>\n<li>GNOME 更新到 50</li>\n</ul>\n\n<p><strong>SkorionOS 55-11</strong></p>\n<ul>\n<li>更新 PowerControl 解决新版 Steam 下显示异常问题</li>\n</ul>\n\n<p><strong>SkorionOS 55-10</strong></p>\n<ul>\n<li>来自主线 7.1 内核的新 NTFS 内核驱动</li>\n<li>同步使用 SteamOS 的 hid-asus-ally 驱动</li>\n<li>修复睡眠唤醒之后，ROG Ally 背键无法使用的问题</li>\n</ul>"
+    "body": "**SkorionOS 56-1**\n- 更新 gamescope、inputplumber\n\n**SkorionOS 56**\n- 更新 Mesa\n- 更新了软件归档日期到 2026-07-10\n\n**SkorionOS 55-12**\n- 更新 PowerControl ，解决功耗控制异常问题\n- 更新了软件归档日期到 2026-05-01，会带来很多软件更新\n- GNOME 更新到 50\n\n**SkorionOS 55-11**\n- 更新 PowerControl 解决新版 Steam 下显示异常问题\n\n**SkorionOS 55-10**\n- 来自主线 7.1 内核的新 NTFS 内核驱动\n- 同步使用 SteamOS 的 hid-asus-ally 驱动\n- 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题",
+    "bbcode_body": "[b]SkorionOS 56-1[/b]\n[list]\n[*] 更新 gamescope、inputplumber\n[/list]\n\n[b]SkorionOS 56[/b]\n[list]\n[*] 更新 Mesa\n[*] 更新了软件归档日期到 2026-07-10\n[/list]\n\n[b]SkorionOS 55-12[/b]\n[list]\n[*] 更新 PowerControl ，解决功耗控制异常问题\n[*] 更新了软件归档日期到 2026-05-01，会带来很多软件更新\n[*] GNOME 更新到 50\n[/list]\n\n[b]SkorionOS 55-11[/b]\n[list]\n[*] 更新 PowerControl 解决新版 Steam 下显示异常问题\n[/list]\n\n[b]SkorionOS 55-10[/b]\n[list]\n[*] 来自主线 7.1 内核的新 NTFS 内核驱动\n[*] 同步使用 SteamOS 的 hid-asus-ally 驱动\n[*] 修复睡眠唤醒之后，ROG Ally 背键无法使用的问题\n[/list]",
+    "html_body": "<p><strong>SkorionOS 56-1</strong></p>\n<ul>\n<li>更新 gamescope、inputplumber</li>\n</ul>\n\n<p><strong>SkorionOS 56</strong></p>\n<ul>\n<li>更新 Mesa</li>\n<li>更新了软件归档日期到 2026-07-10</li>\n</ul>\n\n<p><strong>SkorionOS 55-12</strong></p>\n<ul>\n<li>更新 PowerControl ，解决功耗控制异常问题</li>\n<li>更新了软件归档日期到 2026-05-01，会带来很多软件更新</li>\n<li>GNOME 更新到 50</li>\n</ul>\n\n<p><strong>SkorionOS 55-11</strong></p>\n<ul>\n<li>更新 PowerControl 解决新版 Steam 下显示异常问题</li>\n</ul>\n\n<p><strong>SkorionOS 55-10</strong></p>\n<ul>\n<li>来自主线 7.1 内核的新 NTFS 内核驱动</li>\n<li>同步使用 SteamOS 的 hid-asus-ally 驱动</li>\n<li>修复睡眠唤醒之后，ROG Ally 背键无法使用的问题</li>\n</ul>"
   },
   {
     "title": "System Update",
